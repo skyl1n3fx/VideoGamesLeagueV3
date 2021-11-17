@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetalleEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDetalleEquipoEmpty}" rendered="#{detalleEquipoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{detalleEquipoController.items.rowCount > 0}">
+                    <h:outputText value="#{detalleEquipoController.pagination.pageFirstItem + 1}..#{detalleEquipoController.pagination.pageLastItem + 1}/#{detalleEquipoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{detalleEquipoController.previous}" value="#{bundle.Previous} #{detalleEquipoController.pagination.pageSize}" rendered="#{detalleEquipoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{detalleEquipoController.next}" value="#{bundle.Next} #{detalleEquipoController.pagination.pageSize}" rendered="#{detalleEquipoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{detalleEquipoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalleEquipoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalleEquipoTitle_idEquipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEquipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetalleEquipoTitle_idInscripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInscripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{detalleEquipoController.prepareView}" value="#{bundle.ListDetalleEquipoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalleEquipoController.prepareEdit}" value="#{bundle.ListDetalleEquipoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalleEquipoController.destroy}" value="#{bundle.ListDetalleEquipoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{detalleEquipoController.prepareCreate}" value="#{bundle.ListDetalleEquipoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDetalleEquipoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

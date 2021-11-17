@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateIncripcionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateIncripcionLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{incripcionController.selected.id}" title="#{bundle.CreateIncripcionTitle_id}" required="true" requiredMessage="#{bundle.CreateIncripcionRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateIncripcionLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{incripcionController.selected.fecha}" title="#{bundle.CreateIncripcionTitle_fecha}" required="true" requiredMessage="#{bundle.CreateIncripcionRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateIncripcionLabel_idJugador}" for="idJugador" />
+                    <h:selectOneMenu id="idJugador" value="#{incripcionController.selected.idJugador}" title="#{bundle.CreateIncripcionTitle_idJugador}" required="true" requiredMessage="#{bundle.CreateIncripcionRequiredMessage_idJugador}">
+                        <f:selectItems value="#{perfilJugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateIncripcionLabel_idEstado}" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{incripcionController.selected.idEstado}" title="#{bundle.CreateIncripcionTitle_idEstado}" required="true" requiredMessage="#{bundle.CreateIncripcionRequiredMessage_idEstado}">
+                        <f:selectItems value="#{estadoSolicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateIncripcionLabel_idEquipo}" for="idEquipo" />
+                    <h:selectOneMenu id="idEquipo" value="#{incripcionController.selected.idEquipo}" title="#{bundle.CreateIncripcionTitle_idEquipo}" required="true" requiredMessage="#{bundle.CreateIncripcionRequiredMessage_idEquipo}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{incripcionController.create}" value="#{bundle.CreateIncripcionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{incripcionController.prepareList}" value="#{bundle.CreateIncripcionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateIncripcionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

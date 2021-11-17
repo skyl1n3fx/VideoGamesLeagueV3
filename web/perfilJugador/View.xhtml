@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPerfilJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_id}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.id}" title="#{bundle.ViewPerfilJugadorTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_nombre}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.nombre}" title="#{bundle.ViewPerfilJugadorTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_apellido}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.apellido}" title="#{bundle.ViewPerfilJugadorTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_correo}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.correo}" title="#{bundle.ViewPerfilJugadorTitle_correo}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_habilidad}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.habilidad}" title="#{bundle.ViewPerfilJugadorTitle_habilidad}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_idTipoJugador}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.idTipoJugador}" title="#{bundle.ViewPerfilJugadorTitle_idTipoJugador}"/>
+                    <h:outputText value="#{bundle.ViewPerfilJugadorLabel_idUsuario}"/>
+                    <h:outputText value="#{perfilJugadorController.selected.idUsuario}" title="#{bundle.ViewPerfilJugadorTitle_idUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{perfilJugadorController.destroyAndView}" value="#{bundle.ViewPerfilJugadorDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPerfilJugadorEditLink}"/>
+                <br />
+                <h:commandLink action="#{perfilJugadorController.prepareCreate}" value="#{bundle.ViewPerfilJugadorCreateLink}" />
+                <br />
+                <h:commandLink action="#{perfilJugadorController.prepareList}" value="#{bundle.ViewPerfilJugadorShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPerfilJugadorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

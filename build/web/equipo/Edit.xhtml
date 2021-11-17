@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipoController.selected.id}" title="#{bundle.EditEquipoTitle_id}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{equipoController.selected.nombre}" title="#{bundle.EditEquipoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_cantidadJugador}" for="cantidadJugador" />
+                    <h:inputText id="cantidadJugador" value="#{equipoController.selected.cantidadJugador}" title="#{bundle.EditEquipoTitle_cantidadJugador}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_cantidadJugador}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_idLiga}" for="idLiga" />
+                    <h:selectOneMenu id="idLiga" value="#{equipoController.selected.idLiga}" title="#{bundle.EditEquipoTitle_idLiga}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_idLiga}">
+                        <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_idPerfil}" for="idPerfil" />
+                    <h:selectOneMenu id="idPerfil" value="#{equipoController.selected.idPerfil}" title="#{bundle.EditEquipoTitle_idPerfil}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_idPerfil}">
+                        <f:selectItems value="#{perfilJugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipoController.update}" value="#{bundle.EditEquipoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipoViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipoController.prepareList}" value="#{bundle.EditEquipoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

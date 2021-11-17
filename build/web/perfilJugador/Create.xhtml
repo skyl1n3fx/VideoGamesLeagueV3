@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePerfilJugadorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{perfilJugadorController.selected.id}" title="#{bundle.CreatePerfilJugadorTitle_id}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{perfilJugadorController.selected.nombre}" title="#{bundle.CreatePerfilJugadorTitle_nombre}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{perfilJugadorController.selected.apellido}" title="#{bundle.CreatePerfilJugadorTitle_apellido}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{perfilJugadorController.selected.correo}" title="#{bundle.CreatePerfilJugadorTitle_correo}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_correo}"/>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_habilidad}" for="habilidad" />
+                    <h:inputText id="habilidad" value="#{perfilJugadorController.selected.habilidad}" title="#{bundle.CreatePerfilJugadorTitle_habilidad}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_habilidad}"/>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_idTipoJugador}" for="idTipoJugador" />
+                    <h:selectOneMenu id="idTipoJugador" value="#{perfilJugadorController.selected.idTipoJugador}" title="#{bundle.CreatePerfilJugadorTitle_idTipoJugador}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_idTipoJugador}">
+                        <f:selectItems value="#{tipoJugadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePerfilJugadorLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{perfilJugadorController.selected.idUsuario}" title="#{bundle.CreatePerfilJugadorTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreatePerfilJugadorRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{perfilJugadorController.create}" value="#{bundle.CreatePerfilJugadorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{perfilJugadorController.prepareList}" value="#{bundle.CreatePerfilJugadorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePerfilJugadorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

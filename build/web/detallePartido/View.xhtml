@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetallePartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetallePartidoLabel_id}"/>
+                    <h:outputText value="#{detallePartidoController.selected.id}" title="#{bundle.ViewDetallePartidoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDetallePartidoLabel_idEquipo}"/>
+                    <h:outputText value="#{detallePartidoController.selected.idEquipo}" title="#{bundle.ViewDetallePartidoTitle_idEquipo}"/>
+                    <h:outputText value="#{bundle.ViewDetallePartidoLabel_idResultado}"/>
+                    <h:outputText value="#{detallePartidoController.selected.idResultado}" title="#{bundle.ViewDetallePartidoTitle_idResultado}"/>
+                    <h:outputText value="#{bundle.ViewDetallePartidoLabel_idPartido}"/>
+                    <h:outputText value="#{detallePartidoController.selected.idPartido}" title="#{bundle.ViewDetallePartidoTitle_idPartido}"/>
+                    <h:outputText value="#{bundle.ViewDetallePartidoLabel_idLocalidad}"/>
+                    <h:outputText value="#{detallePartidoController.selected.idLocalidad}" title="#{bundle.ViewDetallePartidoTitle_idLocalidad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detallePartidoController.destroyAndView}" value="#{bundle.ViewDetallePartidoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetallePartidoEditLink}"/>
+                <br />
+                <h:commandLink action="#{detallePartidoController.prepareCreate}" value="#{bundle.ViewDetallePartidoCreateLink}" />
+                <br />
+                <h:commandLink action="#{detallePartidoController.prepareList}" value="#{bundle.ViewDetallePartidoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetallePartidoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

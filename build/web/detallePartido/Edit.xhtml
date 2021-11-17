@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetallePartidoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetallePartidoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{detallePartidoController.selected.id}" title="#{bundle.EditDetallePartidoTitle_id}" required="true" requiredMessage="#{bundle.EditDetallePartidoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditDetallePartidoLabel_idEquipo}" for="idEquipo" />
+                    <h:selectOneMenu id="idEquipo" value="#{detallePartidoController.selected.idEquipo}" title="#{bundle.EditDetallePartidoTitle_idEquipo}" required="true" requiredMessage="#{bundle.EditDetallePartidoRequiredMessage_idEquipo}">
+                        <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetallePartidoLabel_idResultado}" for="idResultado" />
+                    <h:selectOneMenu id="idResultado" value="#{detallePartidoController.selected.idResultado}" title="#{bundle.EditDetallePartidoTitle_idResultado}" required="true" requiredMessage="#{bundle.EditDetallePartidoRequiredMessage_idResultado}">
+                        <f:selectItems value="#{resultadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetallePartidoLabel_idPartido}" for="idPartido" />
+                    <h:selectOneMenu id="idPartido" value="#{detallePartidoController.selected.idPartido}" title="#{bundle.EditDetallePartidoTitle_idPartido}" required="true" requiredMessage="#{bundle.EditDetallePartidoRequiredMessage_idPartido}">
+                        <f:selectItems value="#{partidoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetallePartidoLabel_idLocalidad}" for="idLocalidad" />
+                    <h:selectOneMenu id="idLocalidad" value="#{detallePartidoController.selected.idLocalidad}" title="#{bundle.EditDetallePartidoTitle_idLocalidad}" required="true" requiredMessage="#{bundle.EditDetallePartidoRequiredMessage_idLocalidad}">
+                        <f:selectItems value="#{localidadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detallePartidoController.update}" value="#{bundle.EditDetallePartidoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetallePartidoViewLink}"/>
+                <br />
+                <h:commandLink action="#{detallePartidoController.prepareList}" value="#{bundle.EditDetallePartidoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetallePartidoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
